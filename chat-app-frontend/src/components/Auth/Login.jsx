@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import AuthThemeToggle from './AuthThemeToggle';
 
 // Eye icons (inline SVG — no dependency)
 const EyeIcon = () => (
@@ -33,16 +34,21 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.usernameOrEmail || !formData.password) {
-      setFormError('Please fill in all fields.');
+    const usernameOrEmail = formData.usernameOrEmail.trim();
+    if (!usernameOrEmail) {
+      setFormError('Please enter your username or email address.');
+      return;
+    }
+    if (!formData.password) {
+      setFormError('Please enter your password.');
       return;
     }
     setIsSubmitting(true);
     try {
-      await login(formData.usernameOrEmail, formData.password);
+      await login(usernameOrEmail, formData.password);
       navigate('/chat');
     } catch (err) {
-      setFormError(err.message || 'Login failed. Please check your credentials.');
+      setFormError(err.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -50,6 +56,7 @@ const Login = () => {
 
   return (
     <div className="auth-page">
+      <AuthThemeToggle />
       {/* Left — brand panel */}
       <div className="auth-brand-panel">
         <div className="auth-brand-logo">
