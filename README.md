@@ -36,7 +36,7 @@ Relay is not trying to be a full Slack replacement. It is a focused chat app tha
 | History | Load recent messages when joining and fetch older messages in batches |
 | Interface | Responsive layout with room sidebar, chat pane, member list, and light/dark theme |
 
-## Screenshots
+<!-- ## Screenshots
 
 No screenshots or GIFs are currently committed to this repository. When images are added, place them in a docs or assets folder and link them here.
 
@@ -46,7 +46,7 @@ Suggested captures:
 | --- | --- |
 | Login | Relay sign-in screen |
 | Chat | Room list, message feed, typing state, and online members |
-| Create room | Public/private room creation modal |
+| Create room | Public/private room creation modal | -->
 
 ## Tech Stack
 
