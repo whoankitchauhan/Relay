@@ -1,0 +1,8 @@
+{
+  "short_name": "Relay",
+  "name": "Relay Chat Room App",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#128C7E",
+  "background_color": "#ECE5DD"
+}
