@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const GENERIC_AUTH_ERROR = 'Please sign in to continue.';
 
 // Fail fast if JWT_SECRET is not configured
 if (!process.env.JWT_SECRET) {
@@ -17,7 +18,7 @@ module.exports = function (req, res, next) {
 
   // Check if no token
   if (!token) {
-    return res.status(401).json({ message: 'No authorization token, access denied' });
+    return res.status(401).json({ message: GENERIC_AUTH_ERROR });
   }
 
   try {
@@ -26,6 +27,6 @@ module.exports = function (req, res, next) {
     req.user = decoded;
     next();
   } catch (err) {
-    res.status(401).json({ message: 'Token is invalid or expired' });
+    res.status(401).json({ message: 'Your session has expired. Please sign in again.' });
   }
 };
