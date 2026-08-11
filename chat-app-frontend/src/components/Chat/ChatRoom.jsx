@@ -214,7 +214,7 @@ const ChatRoom = () => {
       setActiveRoom(res.data);
       setJoinAccessKey('');
     } catch (err) {
-      setJoinError(err.response?.data?.message || 'Failed to join room.');
+      setJoinError(err.response?.data?.message || 'Something went wrong. Please try again.');
     } finally {
       setIsJoining(false);
     }
@@ -231,7 +231,7 @@ const ChatRoom = () => {
       setActiveRoom(null);
       setShowLeaveModal(false);
     } catch (err) {
-      alert(err.response?.data?.message || 'Failed to leave room.');
+      alert(err.response?.data?.message || 'Something went wrong. Please try again.');
       setShowLeaveModal(false);
     }
   };

@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import AuthThemeToggle from './AuthThemeToggle';
+
+const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 
 const EyeIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -35,17 +38,39 @@ const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const { username, email, password, confirmPassword } = formData;
-    if (!username || !email || !password || !confirmPassword) {
-      setFormError('Please fill in all fields.');
+    const username = formData.username.trim();
+    const email = formData.email.trim();
+    const { password, confirmPassword } = formData;
+    if (!username) {
+      setFormError('Please enter a username.');
+      return;
+    }
+    if (username.length < 3) {
+      setFormError('Username must be at least 3 characters long.');
+      return;
+    }
+    if (!email) {
+      setFormError('Please enter an email address.');
+      return;
+    }
+    if (!EMAIL_REGEX.test(email)) {
+      setFormError('Please enter a valid email address.');
+      return;
+    }
+    if (!password) {
+      setFormError('Please enter a password.');
+      return;
+    }
+    if (password.length < 6) {
+      setFormError('Password must be at least 6 characters long.');
+      return;
+    }
+    if (!confirmPassword) {
+      setFormError('Please confirm your password.');
       return;
     }
     if (password !== confirmPassword) {
       setFormError('Passwords do not match.');
-      return;
-    }
-    if (password.length < 6) {
-      setFormError('Password must be at least 6 characters.');
       return;
     }
     setIsSubmitting(true);
@@ -53,7 +78,7 @@ const Register = () => {
       await register(username, email, password);
       navigate('/chat');
     } catch (err) {
-      setFormError(err.message || 'Registration failed. Please try again.');
+      setFormError(err.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -61,6 +86,7 @@ const Register = () => {
 
   return (
     <div className="auth-page">
+      <AuthThemeToggle />
       {/* Left — brand panel */}
       <div className="auth-brand-panel">
         <div className="auth-brand-logo">

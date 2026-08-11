@@ -23,6 +23,7 @@ const CreateRoom = ({ isOpen, onClose, onRoomCreated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!roomName.trim()) { setError('Room name is required.'); return; }
+    if (roomName.trim().length < 3) { setError('Room name must be at least 3 characters long.'); return; }
     if (isPrivate && !accessKey.trim()) { setError('Access key is required for private rooms.'); return; }
 
     setIsSubmitting(true);
@@ -37,7 +38,7 @@ const CreateRoom = ({ isOpen, onClose, onRoomCreated }) => {
       onRoomCreated(res.data);
       handleClose();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to create room.');
+      setError(err.response?.data?.message || 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
