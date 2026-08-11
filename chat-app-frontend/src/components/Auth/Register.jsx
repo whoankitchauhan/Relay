@@ -139,7 +139,7 @@ const Register = () => {
                 name="username"
                 value={formData.username}
                 onChange={onChange}
-                placeholder="johndoe"
+                placeholder="Enter your username"
                 autoComplete="username"
                 required
               />
@@ -170,7 +170,7 @@ const Register = () => {
                   name="password"
                   value={formData.password}
                   onChange={onChange}
-                  placeholder="Min. 6 characters"
+                  placeholder="Enter your password"
                   autoComplete="new-password"
                   required
                 />
@@ -190,7 +190,7 @@ const Register = () => {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={onChange}
-                  placeholder="Repeat password"
+                  placeholder="Confirm your password"
                   autoComplete="new-password"
                   required
                 />

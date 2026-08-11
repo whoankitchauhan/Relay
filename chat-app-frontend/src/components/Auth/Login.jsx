@@ -115,7 +115,7 @@ const Login = () => {
                 name="usernameOrEmail"
                 value={formData.usernameOrEmail}
                 onChange={onChange}
-                placeholder="you@example.com"
+                placeholder="Enter your username or email"
                 autoComplete="username"
                 required
               />
@@ -133,7 +133,7 @@ const Login = () => {
                   name="password"
                   value={formData.password}
                   onChange={onChange}
-                  placeholder="Your password"
+                  placeholder="Enter your password"
                   autoComplete="current-password"
                   required
                 />
