@@ -75,7 +75,7 @@ app.use('/api/rooms', require('./routes/rooms'));
 
 // Base route
 app.get('/', (req, res) => {
-  res.send('NexVibe Backend Server is running...');
+  res.send('Relay Backend Server is running...');
 });
 
 // ── Socket.io handler ────────────────────────────────────────────────────────
