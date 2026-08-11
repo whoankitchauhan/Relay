@@ -1,7 +1,7 @@
 {
   "name": "chat-app-backend",
   "version": "1.0.0",
-  "description": "TalkHub Real-time chat backend server",
+  "description": "Relay Real-time chat backend server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
