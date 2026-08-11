@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import api from '../utils/api';
 
 export const AuthContext = createContext();
+const FALLBACK_ERROR = 'Something went wrong. Please try again.';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -41,7 +42,7 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.user);
       return res.data.user;
     } catch (err) {
-      const errMsg = err.response?.data?.message || 'Login failed, please check your credentials';
+      const errMsg = err.response?.data?.message || FALLBACK_ERROR;
       setError(errMsg);
       throw new Error(errMsg);
     }
@@ -56,7 +57,7 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.user);
       return res.data.user;
     } catch (err) {
-      const errMsg = err.response?.data?.message || 'Registration failed, please try again';
+      const errMsg = err.response?.data?.message || FALLBACK_ERROR;
       setError(errMsg);
       throw new Error(errMsg);
     }
