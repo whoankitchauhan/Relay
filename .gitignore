@@ -29,7 +29,7 @@ yarn-error.log*
 *.sw?
 
 # Interview Preparation Guide (Keep Local Only)
-# INTERVIEW_PREPARATION.md
+INTERVIEW_PREPARATION.md
 
 # Mobile
 mobile
